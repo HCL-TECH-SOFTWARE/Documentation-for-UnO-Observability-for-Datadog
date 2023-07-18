@@ -33,16 +33,18 @@ For the dashboards provided with UnO Observability for Datadog, the only support
 
 
 ### 1. Installating and configuring Datadog
-1. From [HCL License Portal](https://id.hcltechsw.com/login/login.htm) download the appropriate UnO Observability installation package:
-   UnO_OBSERVABILITY_APP_FOR_DATADOG_1.1.0.0.tar.gz
-2. Follow the below command to untar the gzip file 
+1. From [HCL License Portal](https://id.hcltechsw.com/login/login.htm) download the appropriate HCL Universal Orchestrator Observability installation package:
+   Universal Orchestrator for UnO Observability Add-on
+   
+2.  Installation package for Datadog: UNO_OBSERVABILITY_APP_FOR_DATADOG_1.1.0.0.tar.gz
+
+3. Follow the below command to untar the gzip file 
   
   ```
-
-	tar -xvzf UnO_OBSERVABILITY_APP_FOR_DATADOG_1.1.0.0.tar.gz
+	tar -xvzf UNO_OBSERVABILITY_APP_FOR_DATADOG_1.1.0.0.tar.gz
   ```
 
-3. Follow the steps mentioned on this ReadMe file to complete the solution setup.
+4. Follow the steps mentioned on this ReadMe file to complete the solution setup.
 
 ### 2. Datadog installation
 
@@ -72,8 +74,7 @@ Inside daemonset.yaml, add the following environment variable for agent containe
  - name: DD_CONTAINER_INCLUDE_LOGS   
    value: "container_name:audit-log-sidecar"           
  - name: DD_CONTAINER_INCLUDE
-   value: "kube_namespace:maestro-suite kube_namespace:maestro-suite-db
-    kube_namespace:maestro-suite-kafka kube_namespace:observability"
+   value: "kube_namespace:maestro-suite kube_namespace:maestro-suite-db kube_namespace:maestro-suite-kafka kube_namespace:observability"
  - name: DD_CONTAINER_EXCLUDE
    value: "kube_namespace:.*"
  - name: DD_CONTAINER_EXCLUDE_LOGS
@@ -85,8 +86,7 @@ Inside daemonset.yaml, add the following environment variable for following cont
  - name: DD_KUBELET_TLS_VERIFY
    value: "false"
  - name: DD_CONTAINER_INCLUDE
-   value: "kube_namespace:maestro-suite kube_namespace:maestro-suite-db
-    kube_namespace:maestro-suite-kafka kube_namespace:observability"
+   value: "kube_namespace:maestro-suite kube_namespace:maestro-suite-db kube_namespace:maestro-suite-kafka kube_namespace:observability"
  - name: DD_CONTAINER_EXCLUDE
    value: "kube_namespace:.*"
   ```
@@ -97,12 +97,7 @@ Update the kube_namespace in DD_CONTAINER_INCLUDE environment value,Once the nam
 Inside daemonset.yaml, add the following environment variable for agent container:
 ```
   - name: DD_PROMETHEUS_SCRAPE_CHECKS
-    value: "[{\"autodiscovery\":{\"kubernetes_annotations\":
-    {\"exclude\":{\"prometheus.io/scrape\":\"false\"},
-    \"include\":{\"prometheus.io/path\":\"/q/metrics\",
-    \"prometheus.io/scrape\":\"true\"}}},\"configurations\":
-    [{\"openmetrics_endpoint\":\"https://%%host%%:%%port%%/q/metrics\",
-    \"namespace\":\"uno_metrics\",\"tls_verify\":false}]}]"                  
+    value: "[{\"autodiscovery\":{\"kubernetes_annotations\":{\"exclude\":{\"prometheus.io/scrape\":\"false\"},\"include\":{\"prometheus.io/path\":\"/q/metrics\",\"prometheus.io/scrape\":\"true\"}}},\"configurations\":[{\"openmetrics_endpoint\":\"https://%%host%%:%%port%%/q/metrics\",\"namespace\":\"uno_metrics\",\"tls_verify\":false}]}]"                  
 ```
 
 Note: Add property "tls_verify":"false" for not certified or unsecure metrics endpoint.
@@ -177,7 +172,9 @@ By clicking a button or menu option, you open a new tab displaying the selected 
 
   Source of Information:  UnO sidecar audit containers, for example: audit-log-sidecar. 
 
-- **Infrastructure Dashboard**. This dashboard provides an overview of the infrastructure details of Universal Orchestrator deployed on Kubernetes cluster. 
+- **Infrastructure Dashboard**. This dashboard provides an overview of the infrastructure details of Universal Orchestrator deployed on Kubernetes cluster. Filter by your Kubernetes namespace and view the dasboard as shown below:
+
+  ![markdown](screenshots/global_filter.PNG)
 
   Source of Information: Infrastructure Logs exposed by kubernetes cluster. 
 
