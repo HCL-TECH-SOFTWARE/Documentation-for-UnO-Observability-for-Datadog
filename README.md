@@ -113,7 +113,7 @@ Inside daemonset.yaml, add the following environment variable for agent containe
 
 After you have configured your YAML file, continute with steps 6 and 7 mentioned in the procedure: [Datadog Agent on Kubernetes](https://docs.datadoghq.com/containers/guide/kubernetes_daemonset/).
 
-NOTE : This Datadog version is monitoring all the namespace in the cluster.So add your namespaces in the filter to see your namespace related information.
+NOTE : This Datadog version is monitoring all the namespace in the cluster. Add your namespaces in the filter to see your namespace related information.
 
 ## UnO Monitoring Dashboards and Alerts setup in Datadog
 
@@ -228,12 +228,16 @@ By clicking a button or menu option, you open a new tab displaying the selected 
     A: There is a filter on each dashboard.You can use these suggestions and give specific input to the filter.   
      
      ![markdown](screenshots/global_filter.PNG)
+     
+9. Q: Namespace filter in the dashboard contains old UnO namespace values ?
 
-9. Q: How to collect metrics from not certified or unsecure metrics endpoint?
+    A: Uncheck the old namespaces and add your new UnO namespace to the filter.
+     
+10. Q: How to collect metrics from not certified or unsecure metrics endpoint?
 
-   A: Add property "tls_verify":"false" to the metric instances.
+     A: Add property "tls_verify":"false" to the metric instances.
 
-10. Q: How to create Application Key?
+11. Q: How to create Application Key?
 
     A: To add a Datadog application key:
     
@@ -242,22 +246,22 @@ By clicking a button or menu option, you open a new tab displaying the selected 
 
     Notes: Application key names cannot be blank.
 
-11. Q: How to create API key ?
+12. Q: How to create API key ?
 
     A: To add a Datadog API key or client token:
 
-    - In your Profile , Navigate to Organization settings, then click the API keys or Client Tokens tab.
+    - In your Profile, navigate to Organization settings, then click the API keys or Client Tokens tab.
     - Click the New Key or New Client Token button, depending on which you’re creating.
     - Enter a name for your key or token.
     - Click Create API key or Create Client Token.
    
-    Notes: Your org must have at least one API key and up to 50 API keys. Key names must be unique across your organization. 
+    Notes: Your organization must have at least one API key and up to 50 API keys. Key names must be unique across your organization. 
 
-12. Q: How to create new alerts/monitors ?
+13. Q: How to create new alerts/monitors ?
 
      A: Follow this [Monitors](https://docs.datadoghq.com/monitors/) documentation to create your alerts/monitors.
             
-13. Q: Error while getting hostname, exiting: unable to reliably determine the host name. You can define one in the agent config file or in your hosts file.
+14. Q: Error while getting hostname, exiting: unable to reliably determine the host name. You can define one in the agent config file or in your hosts file.
      
     A:  Inside its manifest daemonset.yaml, add the following environment variable for all containers ( agent, trace-agent,process-agent,system-probe,security-agent ).
     
@@ -266,7 +270,7 @@ By clicking a button or menu option, you open a new tab displaying the selected 
            value: "false"
     ```
     
-14. Q: How to view logs on Auditing Dashboard piechart component ?
+15. Q: How to view logs on Auditing Dashboard piechart component ?
     
      A: Select the pie chart and select the View related logs.
     
