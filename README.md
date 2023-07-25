@@ -137,7 +137,7 @@ Run the starter.sh with your DD_HOST_PATH,DD_API_KEY, DD_APP_KEY as parameters.
 Look at this command below as an example.
 
 ```
- $ sh ./starter.sh  https://XXX.datadoghq.com 934ac4513XXXXXXX 0efa7dc64XXXXXXX 
+ $ sh ./starter.sh https://api.datadoghq.com 934ac4513XXXXXXX 0efa7dc64XXXXXXX 
 ```
 
 ### 3. Configuring dashboard markdown link
@@ -273,6 +273,9 @@ By clicking a button or menu option, you open a new tab displaying the selected 
 15. Q: How to view logs on Auditing Dashboard piechart component ?
     
      A: Select the pie chart and select the View related logs.
+ 
+16. Q: Datadog script is running but throwing not found error ?
     
+     A: Follow this [Create Dashboard](https://docs.datadoghq.com/api/latest/dashboards/#create-a-new-dashboard) documentation and get the host of Create a new dashboard and then update the DD_HOST_PATH parameter for the starter.sh script.
 
     
